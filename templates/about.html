@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Laptop Friendly</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      {{ bootstrap.load_css() }}
+      <link rel="stylesheet" href="static/css/bootstrap.min.static/css">
+      <!-- style static/css -->
+      <link rel="stylesheet" href="static/css/style.static/css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="static/css/responsive.static/css">
+      <!-- fevicon -->
+      <link rel="icon" href="static/images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom static/css -->
+      <link rel="stylesheet" href="static/css/jquery.mCustomScrollbar.min.static/css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/static/css/font-awesome.static/css">
+      <!-- owl stylesheets -->
+      <link rel="stylesheet" href="static/css/owl.carousel.min.static/css">
+      <link rel="stylesheet" href="static/css/owl.theme.default.min.static/css">
+      <link rel="stylesheet" href="https://cdn/static/js.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.static/css" media="screen">
+
+    </head>
+    <body>
+      <!-- header section start -->
+      <div class="header_section">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="logo"><img src="static/images/Add a subheading.png" width="200" height="100"></div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('check')}}">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('all_cafes',cafes=cafes)}}">ALL CAFES</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        </div>
+      </div>
+      <!-- money section start -->
+     <div class="cafe_section padding_top_0"  style="background-image: url('static/images/pexels-eva-bronzini-6569305.jpg');">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12 col-lg-4">
+            {% for cafe in cafes: %}
+                <h2 class="advanced_text">{{cafe["name"]}}</h2>
+                <h3 class="data_text">{{cafe["location"]}}</h3>
+                <div class="read_bt_1"><a href="{{url_for('find_cafe',cafe_id=cafe['id'])}}">Learn More</a></div>
+            {% endfor %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- money section end -->
+    </body>
+</html>
+
+{% include "footer.html" %}

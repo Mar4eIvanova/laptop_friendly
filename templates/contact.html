@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Laptop Friendly</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      {{ bootstrap.load_css() }}
+      <link rel="stylesheet" href="static/css/bootstrap.min.static/css">
+      <!-- style static/css -->
+      <link rel="stylesheet" href="static/css/style.static/css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="static/css/responsive.static/css">
+      <!-- fevicon -->
+      <link rel="icon" href="static/images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom static/css -->
+      <link rel="stylesheet" href="static/css/jquery.mCustomScrollbar.min.static/css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/static/css/font-awesome.static/css">
+      <!-- owl stylesheets -->
+      <link rel="stylesheet" href="static/css/owl.carousel.min.static/css">
+      <link rel="stylesheet" href="static/css/owl.theme.default.min.static/css">
+      <link rel="stylesheet" href="https://cdn/static/js.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.static/css" media="screen">
+    <style>
+      .feature-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: .75rem;
+}
+
+.icon-square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: .75rem;
+}
+
+.text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
+.text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
+.text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
+
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.feature-icon-small {
+  width: 3rem;
+  height: 3rem;
+}
+
+    </style>
+    </head>
+    <body>
+      <!-- header section start -->
+      <div class="header_section">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="logo"><img src="/static/images/Add a subheading.png" width="200" height="100"></div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('check')}}">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('all_cafes',cafes=cafes)}}">ALL CAFES</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        </div>
+      </div>
+       <div class="banner_section layout_padding">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12 padding_0">
+              <div class="banner_img"><img src="{{requested_c['img_url']}}" width=100%></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<div class="container px-4 py-5" id="icon-grid" >
+    <h2 class="pb-2 border-bottom">{{requested_c['name']}}</h2>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+      <div class="col d-flex align-items-start">
+        <div>
+          <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Can take calls?</h3>
+          {% if requested_c['can_take_calls'] %}
+          <p>Yes, {{requested_c['name']}} can take calls</p>
+          {% else%}
+            <p>No, {{requested_c['name']}} can't take calls</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="bi text-body-secondary flex-shrink-0 me-3"><img src="/static/images/cup-hot-fill.svg" width="30" height="30"></div>
+        <div>
+          <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Price for coffe</h3>
+          <p>{{requested_c['coffee_price']}}</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="bi text-body-secondary flex-shrink-0 me-3"><img src="/static/images/check2-circle.svg" width="30" height="30"></div>
+        <div>
+          <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Can you charge your laptop?</h3>
+           {% if requested_c['has_sockets'] %}
+          <p>Yes, you can charge your laptop at {{requested_c['name']}}</p>
+          {% else%}
+            <p>No, {{requested_c['name']}} doesn't have sockets</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="bi text-body-secondary flex-shrink-0 me-3"><img src="/static/images/badge-wc-fill.svg" width="30" height="30"></div>
+        <div>
+          <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Does it have toilet?</h3>
+           {% if requested_c['has_toilet'] %}
+           <p>Yes, {{requested_c['name']}} has Toilet</p>
+          {% else%}
+            <p>No, {{requested_c['name']}} doesn't have Toilet</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="bi text-body-secondary flex-shrink-0 me-3" ><img src="/static/images/wifi.svg" width="30" height="30"></div>
+        <div>
+          <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Good Wi-Fi?</h3>
+          {% if requested_c['has_wifi'] %}
+          <p>Yes, {{requested_c['name']}} has WiFi</p>
+          {% else%}
+            <p>No, {{requested_c['name']}} doesn't have WiFi</p>
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="bi text-body-secondary flex-shrink-0 me-3"><img src="/static/images/person-fill.svg" width="30" height="30"></div>
+        <div>
+          <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Sets? </h3>
+          <p>It has {{requested_c['seats']}} seats</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="bi text-body-secondary flex-shrink-0 me-3"><img src="/static/images/geo-alt-fill.svg" width="30" height="30"></div>
+        <div>
+          <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Location</h3>
+          <p><a href="{{requested_c['map_url']}}">{{requested_c['map_url']}}</a></p>
+        </div>
+    </div>
+</div>
+</div>
+{% include "footer.html" %}
